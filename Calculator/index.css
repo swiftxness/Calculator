@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.calculator {
+    width: 300px;
+    padding: 20px;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.5s ease-out;
+    transform-origin: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#display {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: right;
+    padding: 5px;
+    background-color: #404040;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#display:focus {
+    box-shadow: 0 0 10px rgba(190, 181, 153, 0.5);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #404040;
+    color: beige;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease-out;
+}
+
+button:active::after {
+    transform: translate(-50%, -50%) scale(2);
+}
+
+button:hover {
+    background-color: #505050;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.operator {
+    background-color: #beb599;
+    color: #2d2d2d;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.operator:hover {
+    background-color: #d4cbb3;
+}
+
+.equals {
+    background-color: #8b7355;
+    color: white;
+    font-weight: 600;
+    animation: pulseOnLoad 1s ease-out;
+}
+
+@keyframes pulseOnLoad {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.equals:hover {
+    background-color: #9e8668;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.clear {
+    background-color: #8b6b61;
+    color: white;
+    font-weight: 500;
+}
+
+.clear:hover {
+    background-color: #9e7c71;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+/* Gomb lenyomás animáció */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Számológép hover effekt */
+.calculator:hover {
+    box-shadow: 0 0 30px rgba(190, 181, 153, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Robbanás effekt */
+@keyframes explode {
+    0% {
+        box-shadow: 0 0 0 0 rgba(190, 181, 153, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 50px 20px rgba(190, 181, 153, 0);
+        transform: scale(1.1);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(190, 181, 153, 0);
+        transform: scale(1);
+    }
+}
+
+.explosion {
+    animation: explode 0.5s ease-out;
+}
+
+/* Display villanás */
+@keyframes flash {
+    0% {
+        background-color: #404040;
+    }
+    50% {
+        background-color: #beb599;
+    }
+    100% {
+        background-color: #404040;
+    }
+}
+
+.flash {
+    animation: flash 0.5s ease-out;
+}
